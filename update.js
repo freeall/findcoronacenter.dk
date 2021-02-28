@@ -10,7 +10,7 @@ const regions = {
 update({ name: 'hovedstaden', url: regions.hovedstaden }).then(() => console.log('done'))
 
 async function update ({ name, url }) {
-  const filepath = path.join('regions', name)
+  const filepath = path.join('cached', name)
   const oldData = fs.existsSync(filepath) ? fs.readFileSync(filepath).toString() : ''
   const { data: newData } = await axios.get(url)
   let hasUpdated = false
