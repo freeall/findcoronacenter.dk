@@ -1,0 +1,11 @@
+{
+  "name": "corona-map",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Tobias Baunbaek <freeall@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "jsdom": "^16.4.0"
+  }
+}
