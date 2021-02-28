@@ -5,7 +5,6 @@
   "author": "Tobias Baunbaek <freeall@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1",
-    "jsdom": "^16.4.0"
+    "puppeteer": "^8.0.0"
   }
 }
