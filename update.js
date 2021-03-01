@@ -1,6 +1,5 @@
-const axios = require('axios')
-const { JSDOM } = require('jsdom')
 const puppeteer = require('puppeteer')
+const fs = require('fs')
 
 run()
 
@@ -11,5 +10,6 @@ async function run () {
   const data = await page.evaluate(
     () => centres
   )
+  fs.writeFileSync('data.raw', JSON.stringify(data))
   console.log('data', data)
 }
