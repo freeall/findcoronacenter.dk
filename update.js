@@ -10,6 +10,6 @@ async function run () {
   const data = await page.evaluate(
     () => centres
   )
-  fs.writeFileSync('data.raw', JSON.stringify(data))
+  fs.writeFileSync('data-raw.json', JSON.stringify(data))
   console.log('data', data)
 }
