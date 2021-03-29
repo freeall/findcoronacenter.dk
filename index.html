@@ -8,6 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./style.css" />
   <script src="./data.js"></script>
+  <script src="./set-language.js"></script>
 </head>
 
 <body>
@@ -17,14 +18,14 @@
     </div>
     <div id="control">
       <div class="control-group">
-        <div class="control-header">Type</div>
+        <div class="control-header"><span class="lang-en">Test type</span><span class="lang-da">Testtype</span></div>
         <div class="control-option">
           <input type="checkbox" id="type-antigen" checked>
-          <label class="control-label" for="type-antigen">Antigen <img src="nose.png"></label>
+          <label class="control-label" for="type-antigen"><span class="lang-en">Antigen</span><span class="lang-da">Hurtig-test</span> <img src="nose.png"></label>
         </div>
         <div class="control-option">
           <input type="checkbox" id="type-pcr" checked>
-          <label class="control-label" for="type-pcr">PCR <img src="mouth.png"></label>
+          <label class="control-label" for="type-pcr"><span class="lang-en">PCR</span><span class="lang-da">PCR-test</span> <img src="mouth.png"></label>
         </div>
       </div>
 
@@ -32,19 +33,19 @@
         <div class="control-header">Booking</div>
         <div class="control-option">
           <input type="checkbox" id="booking-optional" checked>
-          <label class="control-label" for="booking-optional">Optional</label>
+          <label class="control-label" for="booking-optional"><span class="lang-en">Optional</span><span class="lang-da">Valgfri</span></label>
         </div>
         <div class="control-option">
           <input type="checkbox" id="booking-needed" checked>
-          <label class="control-label" for="booking-needed">Needed</label>
+          <label class="control-label" for="booking-needed"><span class="lang-en">Needed</span><span class="lang-da">Nødvendig</span></label>
         </div>
       </div>
 
       <div class="control-group">
-        <div class="control-header">Hours</div>
+        <div class="control-header"><span class="lang-en">Hours</span><span class="lang-da">Timer</span></div>
         <div class="control-option">
-          <input type="checkbox" name="show-closed" id="show-closed" checked>
-          <label class="control-label" for="show-closed">Show closed</label>
+          <input type="checkbox" name="show-only-open" id="show-only-open">
+          <label class="control-label" for="show-only-open"><span class="lang-en">Only show open</span><span class="lang-da">Vis kun åbne</span></label>
         </div>
       </div>
     </div>

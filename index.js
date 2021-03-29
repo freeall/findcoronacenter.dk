@@ -4,8 +4,8 @@ const $typeAntigen = $('#type-antigen')
 const $typePcr = $('#type-pcr')
 const $bookingOptional = $('#booking-optional')
 const $bookingNeeded = $('#booking-needed')
-const $showClosed = $('#show-closed')
-const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showClosed]
+const $showOnlyOpen = $('#show-only-open')
+const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showOnlyOpen]
 
 $components.forEach($component => $component.addEventListener('click', update))
 document.addEventListener('keydown', e => {
@@ -146,7 +146,7 @@ function update () {
   const isTypePcr = $typePcr.checked
   const isBookingOptional = $bookingOptional.checked
   const isBookingNeeded = $bookingNeeded.checked
-  const shouldShowClosed = $showClosed.checked
+  const shouldOnlyShowOpen = $showOnlyOpen.checked
 
   // Update the map in this order so that the open centers are put on top
   const closedCenters = centers.filter(c => c.openStatus === 'closed')
@@ -159,7 +159,7 @@ function update () {
     const isTypeShown = (isTypeAntigen && center.type === 'Antigen') || (isTypePcr && center.type === 'PCR')
     const isBookingShown = (isBookingOptional && !center.bookingLink) || (isBookingNeeded && center.bookingLink)
     const shouldShow = isTypeShown && isBookingShown
-    if (!shouldShowClosed && isClosed) return center.marker.setMap(null)
+    if (shouldOnlyShowOpen && isClosed) return center.marker.setMap(null)
     if (!shouldShow) return center.marker.setMap(null)
     center.marker.setMap(map)
   }))
