@@ -13,7 +13,7 @@ async function run () {
   )
   fs.writeFileSync('data.js', `
     lastUpdated = '${new Date().toString()}'
-    centers = ${JSON.stringify(data, null, 2)}
+    centers = ${JSON.stringify(data)}
   `)
   console.log('Updated. Stored in data.js')
   process.exit(0)
