@@ -4,7 +4,8 @@ const $typeAntigen = $('#type-antigen')
 const $typePcr = $('#type-pcr')
 const $bookingOptional = $('#booking-optional')
 const $bookingNeeded = $('#booking-needed')
-const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded]
+const $showClosed = $('#show-closed')
+const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showClosed]
 const stats = {
   lastUpdated,
   antigenCenters: centers.filter(({ type }) => type === 'Antigen').length,
@@ -147,12 +148,14 @@ function initMap () {
 }
 
 function update () {
-  const isTypeAntigen = $('#type-antigen').checked
-  const isTypePcr = $('#type-pcr').checked
-  const isBookingOptional = $('#booking-optional').checked
-  const isBookingNeeded = $('#booking-needed').checked
+  const isTypeAntigen = $typeAntigen.checked
+  const isTypePcr = $typePcr.checked
+  const isBookingOptional = $bookingOptional.checked
+  const isBookingNeeded = $bookingNeeded.checked
+  const shouldShowClosed = $showClosed.checked
 
   centers.forEach(center => {
+    const isClosed = getOpenStatus(center) === 'closed'
     const shouldShow =
       (
         (isTypeAntigen && center.type === 'Antigen') ||
@@ -163,6 +166,7 @@ function update () {
         (isBookingOptional && !center.bookingLink) ||
         (isBookingNeeded && center.bookingLink)
       )
+    if (!shouldShowClosed && isClosed) return center.marker.setMap(null)
     if (!shouldShow) return center.marker.setMap(null)
     center.marker.setMap(map)
   })
