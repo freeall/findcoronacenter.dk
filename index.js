@@ -6,6 +6,7 @@ const $bookingOptional = $('#booking-optional')
 const $bookingNeeded = $('#booking-needed')
 const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded]
 const stats = {
+  lastUpdated,
   antigenCenters: centers.filter(({ type }) => type === 'Antigen').length,
   pcrCenters: centers.filter(({ type }) => type === 'PCR').length,
   openingSoonCenters: centers.filter(center => getOpenStatus(center) === 'opensSoon').length,
@@ -30,7 +31,7 @@ function initMap () {
   centers.forEach(center => {
     const hasNotOpenedYet = dateFns.isAfter(new Date(center.timeStart), new Date())
     const openStatus = getOpenStatus(center)
-    const iconType = center.Type === 'Antigen' ? 'nose' : 'mouth'
+    const iconType = center.type === 'Antigen' ? 'nose' : 'mouth'
     const iconColor = { opensSoon: 'yellow', open: 'green', closesSoon: 'yellow', closed: 'red' }[openStatus]
     const icon = `${iconType}-${iconColor}.png`
     center.marker = new google.maps.Marker({

@@ -11,7 +11,10 @@ async function run () {
   const data = await page.evaluate(
     () => centres
   )
-  fs.writeFileSync('data.js', `centers = ${JSON.stringify(data, null, 2)}`)
+  fs.writeFileSync('data.js', `
+    lastUpdated = '${new Date().toString()}'
+    centers = ${JSON.stringify(data, null, 2)}
+  `)
   console.log('Updated. Stored in data.js')
   process.exit(0)
 }

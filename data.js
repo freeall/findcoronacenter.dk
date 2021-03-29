@@ -1,4 +1,6 @@
-centers = [
+
+    lastUpdated = 'Mon Mar 29 2021 13:55:52 GMT+0200 (Central European Summer Time)'
+    centers = [
   {
     "testcenterName": "Grænsehallerne",
     "type": "Antigen",
@@ -320,13 +322,13 @@ centers = [
       },
       {
         "day": "Thursday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
@@ -343,7 +345,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk ændrede åbningstider pga. påske fra 1. april til 5. april. "
   },
   {
     "testcenterName": "Felsted Hallen",
@@ -499,8 +501,8 @@ centers = [
     "openWednesday": true,
     "openThursday": true,
     "openFriday": true,
-    "openSaturday": false,
-    "openSunday": false,
+    "openSaturday": true,
+    "openSunday": true,
     "id": "558",
     "dawaAddressId": "4af509cb-3623-4b52-aefe-40a4c8b56bb0",
     "address": "Hjelmalle 3, 6200 Aabenraa",
@@ -527,17 +529,29 @@ centers = [
       {
         "day": "Thursday",
         "timeStart": "10:00:00",
-        "timeEnd": "17:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
-        "timeStart": "08:00:00",
-        "timeEnd": "18:00:00",
+        "timeStart": "10:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Saturday",
+        "timeStart": "10:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Sunday",
+        "timeStart": "10:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": "\n"
+    "description": "Bemærk udvidet åbningstid pga. påsken fra den 1. april til den 5. april. \n"
   },
   {
     "testcenterName": "Løjt Idrætsanlæg",
@@ -643,8 +657,8 @@ centers = [
     "openWednesday": true,
     "openThursday": true,
     "openFriday": true,
-    "openSaturday": false,
-    "openSunday": false,
+    "openSaturday": true,
+    "openSunday": true,
     "id": "429",
     "dawaAddressId": "4dc4e521-28b0-4aae-98b6-ce343bf7bb6b",
     "address": "Visherredsvej 3, 6330 Padborg",
@@ -671,7 +685,7 @@ centers = [
       {
         "day": "Thursday",
         "timeStart": "07:00:00",
-        "timeEnd": "18:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
@@ -679,9 +693,21 @@ centers = [
         "timeStart": "07:00:00",
         "timeEnd": "18:00:00",
         "disabled": false
+      },
+      {
+        "day": "Saturday",
+        "timeStart": "10:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Sunday",
+        "timeStart": "10:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk udvidet åbningstid pga. påsken fra den 1. april til den 5. april. "
   },
   {
     "testcenterName": "Gandrup",
@@ -4114,81 +4140,6 @@ centers = [
     "description": ""
   },
   {
-    "testcenterName": "Nexø",
-    "type": "Antigen",
-    "placement": "Mobile",
-    "directionsLink": "http://www.google.com/maps/place/55.06312033,15.11803358",
-    "minimumAge": 12,
-    "requiresCprNumber": false,
-    "company": "Copenhagen Medical",
-    "region": "Region Hovedstaden",
-    "municipality": "Bornholm",
-    "parish": "Nexø",
-    "zipcode": "3730",
-    "city": "Nexø",
-    "street": "Gl Rønnevej",
-    "streetNumber": "17A",
-    "latitude": 55.06312033,
-    "longitude": 15.11803358,
-    "openMonday": true,
-    "openTuesday": true,
-    "openWednesday": true,
-    "openThursday": true,
-    "openFriday": true,
-    "openSaturday": true,
-    "openSunday": true,
-    "id": "784",
-    "dawaAddressId": "0a3f50b1-e99a-32b8-e044-0003ba298018",
-    "address": "Gl Rønnevej 17A, Nexø, 3730 Nexø",
-    "timeStart": "2021-03-10T11:32:00+00:00",
-    "timeEnd": "2021-03-28T18:00:00+00:00",
-    "openingHours": [
-      {
-        "day": "Monday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Tuesday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Wednesday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Thursday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Friday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Saturday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Sunday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      }
-    ],
-    "description": ""
-  },
-  {
     "testcenterName": "Bornholm",
     "type": "PCR",
     "placement": "Stationary",
@@ -4337,81 +4288,6 @@ centers = [
       }
     ],
     "description": "Fast track for rejsende"
-  },
-  {
-    "testcenterName": "Aakirkeby",
-    "type": "Antigen",
-    "placement": "Mobile",
-    "directionsLink": "http://www.google.com/maps/place/55.07074942,14.92553395",
-    "minimumAge": 12,
-    "requiresCprNumber": false,
-    "company": "Copenhagen Medical",
-    "region": "Region Hovedstaden",
-    "municipality": "Bornholm",
-    "parish": "Aaker",
-    "zipcode": "3720",
-    "city": "Aakirkeby",
-    "street": "Nygade",
-    "streetNumber": "42",
-    "latitude": 55.07074942,
-    "longitude": 14.92553395,
-    "openMonday": true,
-    "openTuesday": true,
-    "openWednesday": true,
-    "openThursday": true,
-    "openFriday": true,
-    "openSaturday": true,
-    "openSunday": true,
-    "id": "634",
-    "dawaAddressId": "d4a9c044-e91e-45f4-a5c9-638e829d3f1f",
-    "address": "Nygade 42, Aakirkeby, 3720 Aakirkeby",
-    "timeStart": "2021-03-10T11:32:00+00:00",
-    "timeEnd": "2021-03-28T18:00:00+00:00",
-    "openingHours": [
-      {
-        "day": "Monday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Tuesday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Wednesday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Thursday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Friday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Saturday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Sunday",
-        "timeStart": "08:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      }
-    ],
-    "description": ""
   },
   {
     "testcenterName": "Aakirkeby",
@@ -5266,13 +5142,13 @@ centers = [
       },
       {
         "day": "Thursday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
@@ -5289,7 +5165,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk ændrede åbningstider pga. påske fra 1. april til 5. april. "
   },
   {
     "testcenterName": "Østerby Sundhedscenter, Torvet",
@@ -5955,7 +5831,7 @@ centers = [
       {
         "day": "Sunday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
@@ -6037,7 +5913,7 @@ centers = [
       {
         "day": "Sunday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
@@ -7425,6 +7301,80 @@ centers = [
     "description": ""
   },
   {
+    "testcenterName": "Frederiksberg - Fælleshuset",
+    "type": "Antigen",
+    "placement": "Stationary",
+    "directionsLink": "http://www.google.com/maps/place/55.68151138,12.49869255",
+    "minimumAge": 6,
+    "requiresCprNumber": false,
+    "company": "Copenhagen Medical",
+    "region": "Region Hovedstaden",
+    "municipality": "Frederiksberg",
+    "parish": "Flintholm",
+    "zipcode": "2000",
+    "city": "Frederiksberg",
+    "street": "Christian Paulsens Vej",
+    "streetNumber": "15",
+    "latitude": 55.68151138,
+    "longitude": 12.49869255,
+    "openMonday": true,
+    "openTuesday": true,
+    "openWednesday": true,
+    "openThursday": true,
+    "openFriday": true,
+    "openSaturday": true,
+    "openSunday": true,
+    "id": "983",
+    "dawaAddressId": "28b004f5-b7a3-4845-a960-efd82d05de22",
+    "address": "Christian Paulsens Vej 15, 2000 Frederiksberg",
+    "timeStart": "2021-04-01T06:00:00+00:00",
+    "openingHours": [
+      {
+        "day": "Monday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Tuesday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Wednesday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Thursday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Friday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Saturday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Sunday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      }
+    ],
+    "description": "Åbner 1. april"
+  },
+  {
     "testcenterName": "Forum",
     "type": "Antigen",
     "placement": "Stationary",
@@ -7646,7 +7596,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Den 31. marts kun åbent klokken 7-15"
   },
   {
     "testcenterName": "Frederiksberg Rådhus",
@@ -7708,7 +7658,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Lukket 1-5. april pga. påske"
   },
   {
     "testcenterName": "Frederiksberg",
@@ -8001,7 +7951,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": "Ekstra test søndag 28. marts 09-17."
+    "description": ""
   },
   {
     "testcenterName": "Frederikshavn",
@@ -9756,6 +9706,80 @@ centers = [
     "description": "Lukket søndag d. 4. april.\nTestcentret lukker på det oplyste tidspunkt. Derfor er det god ide at møde op 30 minutter før lukketid.\n"
   },
   {
+    "testcenterName": "Varberg Parken",
+    "type": "Antigen",
+    "placement": "Stationary",
+    "directionsLink": "http://www.google.com/maps/place/55.25997263,9.50106019",
+    "minimumAge": 12,
+    "requiresCprNumber": true,
+    "company": "Carelink",
+    "region": "Region Syddanmark",
+    "municipality": "Haderslev",
+    "parish": "Vor Frue",
+    "zipcode": "6100",
+    "city": "Haderslev",
+    "street": "Varbergvej",
+    "streetNumber": "51",
+    "latitude": 55.25997263,
+    "longitude": 9.50106019,
+    "openMonday": true,
+    "openTuesday": true,
+    "openWednesday": true,
+    "openThursday": true,
+    "openFriday": true,
+    "openSaturday": true,
+    "openSunday": true,
+    "id": "982",
+    "dawaAddressId": "462c74d8-94cc-482e-b5e9-9825a8e661b9",
+    "address": "Varbergvej 51, 6100 Haderslev",
+    "timeStart": "2021-03-31T06:00:00+00:00",
+    "openingHours": [
+      {
+        "day": "Monday",
+        "timeStart": "09:00:00",
+        "timeEnd": "19:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Tuesday",
+        "timeStart": "09:00:00",
+        "timeEnd": "19:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Wednesday",
+        "timeStart": "09:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Thursday",
+        "timeStart": "09:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Friday",
+        "timeStart": "09:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Saturday",
+        "timeStart": "09:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Sunday",
+        "timeStart": "09:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      }
+    ],
+    "description": "Bemærk forlænget åbningstid i påsken."
+  },
+  {
     "testcenterName": "Starup Hallen",
     "type": "Antigen",
     "placement": "Stationary",
@@ -9799,35 +9823,35 @@ centers = [
       {
         "day": "Wednesday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Vojens Hallerne",
@@ -9873,35 +9897,35 @@ centers = [
       {
         "day": "Wednesday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Haderslev Bibliotek",
@@ -9947,35 +9971,35 @@ centers = [
       {
         "day": "Wednesday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Haderslev",
@@ -10097,35 +10121,35 @@ centers = [
       {
         "day": "Wednesday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Sundhedscenter Vojens",
@@ -10171,35 +10195,35 @@ centers = [
       {
         "day": "Wednesday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Sundhedscenter Haderslev",
@@ -10245,35 +10269,35 @@ centers = [
       {
         "day": "Wednesday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Lokalhistorisk arkiv",
@@ -10319,35 +10343,35 @@ centers = [
       {
         "day": "Wednesday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": "\n"
+    "description": "Bemærk forlænget åbningstid i påsken.\n"
   },
   {
     "testcenterName": "Halsnæs",
@@ -12867,7 +12891,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": "Både for kørende og gående.\nHandicapvenlig"
+    "description": "Både for kørende og gående.\nHandicapvenlig\nLørdag 03/04 + Påskesøndag 04/04 + Mandag 2. Påskedag 05/04 er åbningstiderne ændret til kl. 08 - 20"
   },
   {
     "testcenterName": "Horsens",
@@ -12930,14 +12954,14 @@ centers = [
       },
       {
         "day": "Saturday",
-        "timeStart": "10:00:00",
-        "timeEnd": "17:00:00",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
-        "timeStart": "10:00:00",
-        "timeEnd": "17:00:00",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
@@ -13242,7 +13266,7 @@ centers = [
     "description": ""
   },
   {
-    "testcenterName": "Høje-Taastrup",
+    "testcenterName": "Hedehusene",
     "type": "PCR",
     "placement": "Stationary",
     "bookingLink": "https://www.coronaprover.dk/",
@@ -14243,7 +14267,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": "Ekstra test søndag 28. marts 9-17"
+    "description": ""
   },
   {
     "testcenterName": "Fjerritslev",
@@ -15195,13 +15219,13 @@ centers = [
       },
       {
         "day": "Thursday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
@@ -15218,7 +15242,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk ændrede åbningstider pga. påske fra 1. april til 5. april. "
   },
   {
     "testcenterName": "Kolding Storcenter",
@@ -15240,10 +15264,10 @@ centers = [
     "openMonday": true,
     "openTuesday": true,
     "openWednesday": true,
-    "openThursday": true,
-    "openFriday": true,
+    "openThursday": false,
+    "openFriday": false,
     "openSaturday": true,
-    "openSunday": true,
+    "openSunday": false,
     "id": "593",
     "dawaAddressId": "0ba65497-a698-470a-a45c-b3a46eb71a06",
     "address": "Skovvangen 42, 1. 2093, 6000 Kolding",
@@ -15268,31 +15292,13 @@ centers = [
         "disabled": false
       },
       {
-        "day": "Thursday",
-        "timeStart": "09:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Friday",
-        "timeStart": "09:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
         "day": "Saturday",
-        "timeStart": "09:00:00",
-        "timeEnd": "20:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Sunday",
         "timeStart": "09:00:00",
         "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk lukket skærtorsdag, langfredag, påskedag og anden påskedag. "
   },
   {
     "testcenterName": "Arena Syd, Idrætsvej",
@@ -15430,13 +15436,13 @@ centers = [
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "20:00:00",
+        "timeEnd": "19:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "20:00:00",
+        "timeEnd": "19:00:00",
         "disabled": false
       }
     ],
@@ -15504,13 +15510,13 @@ centers = [
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "20:00:00",
+        "timeEnd": "19:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "20:00:00",
+        "timeEnd": "19:00:00",
         "disabled": false
       }
     ],
@@ -15560,7 +15566,7 @@ centers = [
       {
         "day": "Saturday",
         "timeStart": "13:00:00",
-        "timeEnd": "20:00:00",
+        "timeEnd": "19:00:00",
         "disabled": false
       }
     ],
@@ -15627,13 +15633,13 @@ centers = [
       },
       {
         "day": "Saturday",
-        "timeStart": "13:00:00",
+        "timeStart": "11:00:00",
         "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
-        "timeStart": "13:00:00",
+        "timeStart": "11:00:00",
         "timeEnd": "20:00:00",
         "disabled": false
       }
@@ -18111,17 +18117,17 @@ centers = [
       {
         "day": "Wednesday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Anna Trolles Skole",
@@ -18155,17 +18161,17 @@ centers = [
       {
         "day": "Tuesday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Nørre Aaby Skole",
@@ -18199,17 +18205,17 @@ centers = [
       {
         "day": "Tuesday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Ejby Skole",
@@ -18243,17 +18249,17 @@ centers = [
       {
         "day": "Monday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Wednesday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Lillebæltshallerne",
@@ -18287,47 +18293,47 @@ centers = [
       {
         "day": "Monday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Tuesday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Wednesday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Strib Skole",
@@ -18361,17 +18367,17 @@ centers = [
       {
         "day": "Monday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Gelsted Skole",
@@ -18405,17 +18411,17 @@ centers = [
       {
         "day": "Monday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
         "timeStart": "10:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk forlænget åbningstid i påsken."
   },
   {
     "testcenterName": "Nykøbing Mors",
@@ -19055,7 +19061,7 @@ centers = [
       {
         "day": "Saturday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
@@ -19105,7 +19111,7 @@ centers = [
       {
         "day": "Sunday",
         "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
@@ -20134,13 +20140,13 @@ centers = [
       },
       {
         "day": "Thursday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
@@ -20157,7 +20163,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk ændrede åbningstider pga. påske fra 1. april til 5. april. "
   },
   {
     "testcenterName": "Odense",
@@ -20302,8 +20308,8 @@ centers = [
       },
       {
         "day": "Sunday",
-        "timeStart": "11:00:00",
-        "timeEnd": "16:00:00",
+        "timeStart": "10:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
@@ -25567,13 +25573,13 @@ centers = [
       },
       {
         "day": "Thursday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
-        "timeStart": "07:00:00",
+        "timeStart": "09:00:00",
         "timeEnd": "21:00:00",
         "disabled": false
       },
@@ -25590,7 +25596,7 @@ centers = [
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk ændrede åbningstider pga. påske fra 1. april til 5. april. "
   },
   {
     "testcenterName": "Svendborg",
@@ -26326,36 +26332,36 @@ centers = [
       },
       {
         "day": "Wednesday",
-        "timeStart": "13:30:00",
+        "timeStart": "08:30:00",
         "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
-        "timeStart": "08:30:00",
-        "timeEnd": "12:00:00",
+        "timeStart": "10:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
-        "timeStart": "13:30:00",
+        "timeStart": "10:00:00",
         "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "10:00:00",
-        "timeEnd": "16:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "10:00:00",
-        "timeEnd": "16:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": ""
+    "description": "Bemærk der er udvidede åbningstider fra onsdag den 31. marts til mandag den 5. april."
   },
   {
     "testcenterName": "Sønderborg",
@@ -27017,35 +27023,35 @@ centers = [
       {
         "day": "Wednesday",
         "timeStart": "08:30:00",
-        "timeEnd": "12:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Thursday",
-        "timeStart": "13:30:00",
+        "timeStart": "10:00:00",
         "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Friday",
-        "timeStart": "08:30:00",
-        "timeEnd": "12:00:00",
+        "timeStart": "10:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Saturday",
         "timeStart": "10:00:00",
-        "timeEnd": "16:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       },
       {
         "day": "Sunday",
         "timeStart": "10:00:00",
-        "timeEnd": "16:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
-    "description": "\n"
+    "description": "Bemærk der er udvidede åbningstider fra onsdag den 31. marts til mandag den 5. april.\n"
   },
   {
     "testcenterName": "Hurup",
@@ -29183,7 +29189,7 @@ centers = [
       {
         "day": "Sunday",
         "timeStart": "08:30:00",
-        "timeEnd": "18:00:00",
+        "timeEnd": "20:00:00",
         "disabled": false
       }
     ],
@@ -29669,7 +29675,7 @@ centers = [
       {
         "day": "Saturday",
         "timeStart": "10:00:00",
-        "timeEnd": "13:00:00",
+        "timeEnd": "16:00:00",
         "disabled": false
       }
     ],
@@ -31006,3 +31012,4 @@ centers = [
     "description": "\n"
   }
 ]
+  
