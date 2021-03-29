@@ -6,19 +6,8 @@ const $bookingOptional = $('#booking-optional')
 const $bookingNeeded = $('#booking-needed')
 const $showClosed = $('#show-closed')
 const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showClosed]
-const stats = {
-  lastUpdated,
-  antigenCenters: centers.filter(({ type }) => type === 'Antigen').length,
-  pcrCenters: centers.filter(({ type }) => type === 'PCR').length,
-  openingSoonCenters: centers.filter(center => getOpenStatus(center) === 'opensSoon').length,
-  openCenters: centers.filter(center => getOpenStatus(center) === 'open').length,
-  closesSoonCenters: centers.filter(center => getOpenStatus(center) === 'closesSoon').length,
-  closedCenters: centers.filter(center => getOpenStatus(center) === 'closed').length,
-  notOpenYetCenters: centers.filter(({ timeStart }) => dateFns.isAfter(new Date(timeStart), new Date())).length
-}
 
 $components.forEach($component => $component.addEventListener('click', update))
-console.log(stats)
 
 function initMap () {
   map = new google.maps.Map(document.getElementById('map'))
@@ -43,6 +32,7 @@ function initMap () {
         lng: center.longitude
       }
     })
+    center.openStatus = openStatus
     center.marker.addListener('click', () => {
       centers.forEach(center => center.info.close())
       center.info.open(map, center.marker)
@@ -144,6 +134,7 @@ function initMap () {
   })
 
   // loadSettingsFromLocalStorage()
+  updateStats()
   update()
 }
 
@@ -154,23 +145,36 @@ function update () {
   const isBookingNeeded = $bookingNeeded.checked
   const shouldShowClosed = $showClosed.checked
 
-  centers.forEach(center => {
-    const isClosed = getOpenStatus(center) === 'closed'
-    const shouldShow =
-      (
-        (isTypeAntigen && center.type === 'Antigen') ||
-        (isTypePcr && center.type === 'PCR')
-      )
-      &&
-      (
-        (isBookingOptional && !center.bookingLink) ||
-        (isBookingNeeded && center.bookingLink)
-      )
+  // Update the map in this order so that the open centers are put on top
+  const closedCenters = centers.filter(c => c.openStatus === 'closed')
+  const closesSoonCenters = centers.filter(c => c.openStatus === 'closesSoon')
+  const opensSoonCenters = centers.filter(c => c.openStatus === 'opensSoon')
+  const openCenters = centers.filter(c => c.openStatus === 'open')
+  const centersInDrawOrder = [closedCenters, closesSoonCenters, opensSoonCenters, openCenters]
+  centersInDrawOrder.forEach(centers => centers.forEach(center => {
+    const isClosed = center.openStatus === 'closed'
+    const isTypeShown = (isTypeAntigen && center.type === 'Antigen') || (isTypePcr && center.type === 'PCR')
+    const isBookingShown = (isBookingOptional && !center.bookingLink) || (isBookingNeeded && center.bookingLink)
+    const shouldShow = isTypeShown && isBookingShown
     if (!shouldShowClosed && isClosed) return center.marker.setMap(null)
     if (!shouldShow) return center.marker.setMap(null)
     center.marker.setMap(map)
-  })
+  }))
   // storeSettingsInLocalStorage()
+}
+
+function updateStats () {
+  const stats = {
+    lastUpdated,
+    antigenCenters: centers.filter(({ type }) => type === 'Antigen').length,
+    pcrCenters: centers.filter(({ type }) => type === 'PCR').length,
+    openingSoonCenters: centers.filter(center => center.openStatus === 'opensSoon').length,
+    openCenters: centers.filter(center => center.openStatus === 'open').length,
+    closesSoonCenters: centers.filter(center => center.openStatus === 'closesSoon').length,
+    closedCenters: centers.filter(center => center.openStatus === 'closed').length,
+    notOpenYetCenters: centers.filter(({ timeStart }) => dateFns.isAfter(new Date(timeStart), new Date())).length
+  }
+  console.log(stats)
 }
 
 function getOpenStatus (center) {
