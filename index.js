@@ -8,6 +8,9 @@ const $showClosed = $('#show-closed')
 const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showClosed]
 
 $components.forEach($component => $component.addEventListener('click', update))
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeInfoWindow()
+})
 
 function initMap () {
   map = new google.maps.Map(document.getElementById('map'))
@@ -175,6 +178,10 @@ function updateStats () {
     notOpenYetCenters: centers.filter(({ timeStart }) => dateFns.isAfter(new Date(timeStart), new Date())).length
   }
   console.log(stats)
+}
+
+function closeInfoWindow () {
+  centers.forEach(center => center.info.close())
 }
 
 function getOpenStatus (center) {
