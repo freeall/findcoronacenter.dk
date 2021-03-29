@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer')
 const fs = require('fs')
+const { open } = require('inspector')
 
 run()
 
@@ -10,6 +11,7 @@ async function run () {
   const data = await page.evaluate(
     () => centres
   )
-  fs.writeFileSync('data-raw.json', JSON.stringify(data))
-  console.log('data', data)
+  fs.writeFileSync('data.js', `centers = ${JSON.stringify(data, null, 2)}`)
+  console.log('Updated. Stored in data.js')
+  process.exit(0)
 }

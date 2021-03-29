@@ -3,17 +3,47 @@
 
 <head>
   <title>Corona Map</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./style.css" />
-  <script src="./index.js"></script>
+  <script src="./data.js"></script>
 </head>
 
 <body>
-  <div id="header">
-    Loled by freeall
-  </div>
-  <div id="map"></div>
+  <div id="wrapper">
+    <div id="header">
+      Loled by freeall
+    </div>
+    <div id="control">
+      <div class="control-group">
+        <div class="control-header">Type</div>
+        <div class="control-option">
+          <input type="checkbox" id="type-antigen" checked>
+          <label class="control-label" for="type-antigen">Antigen <img src="nose.png"></label>
+        </div>
+        <div class="control-option">
+          <input type="checkbox" id="type-pcr" checked>
+          <label class="control-label" for="type-pcr">PCR <img src="mouth.png"></label>
+        </div>
+      </div>
 
+      <div class="control-group">
+        <div class="control-header">Booking</div>
+        <div class="control-option">
+          <input type="checkbox" id="booking-optional" checked>
+          <label class="control-label" for="booking-optional">Optional</label>
+        </div>
+        <div class="control-option">
+          <input type="checkbox" id="booking-needed" checked>
+          <label class="control-label" for="booking-needed">Needed</label>
+        </div>
+      </div>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <script src="./index.js"></script>
   <script
     async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsi9Ott418NmhnUe939KmCjUNIOBVg7FA&callback=initMap&libraries=&v=weekly"

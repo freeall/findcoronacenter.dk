@@ -1,9 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100vh;
   margin: 0;
   padding: 0;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+table {
+  border-spacing: 0;
+}
+
+td {
+  padding-left: 0;
+}
+td + td {
+  padding-left: 10px;
+}
+
+#wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 #header {
@@ -14,7 +36,69 @@ body {
   padding: 0 15px;
 }
 
+#control {
+  left: 10px;
+  top: 130px;
+  position: absolute;
+  z-index: 1;
+  width: 169px;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 30%) 0px 1px 4px -1px;
+  border-radius: 2px;
+  font-family: Roboto, Arial, sans-serif;
+  padding: 10px 5px;
+}
+
 #map {
   height: 100%;
 }
 
+.control-group + .control-group {
+  margin-top: 20px;
+}
+
+.control-header {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.control-option {
+  display: flex;
+  margin: 3px 0;
+}
+
+.control-label {
+  flex-grow: 1;
+  display: flex;
+}
+
+.hidden {
+  display: none
+}
+
+.info-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+.info-title--closesSoon {
+  color: #bfa040;
+}
+.info-title--open {
+  color: #004400;
+}
+.info-title--closed {
+  color: #ff0000;
+}
+.info-header {
+  font-weight: bold;
+  margin-top: 10px;
+}
+.info-header--closesSoon {
+  font-style: italic;
+  color: #ff0000;
+}
+.info-header--opensSoon {
+  font-style: italic;
+  color: #004400;
+}
