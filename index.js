@@ -10,7 +10,9 @@ const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $
 
 $components.forEach($component => $component.addEventListener('click', update))
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeInfoWindow()
+  if (e.key !== 'Escape') return
+  closeInfoWindow()
+  location.hash = ''
 })
 $lastUpdatedAt.innerHTML = dateFns.format(new Date(lastUpdated), 'DD/M HH:mm')
 
@@ -22,6 +24,7 @@ function initMap () {
   bounds.extend({ lng: 8.08997684086, lat: 54.8000145534 })
   bounds.extend({ lng: 12.6900061378, lat: 57.730016588 })
   map.fitBounds(bounds)
+  const loadId = location.hash && location.hash.split('#')[1]
 
   // Add marker
   centers.forEach(center => {
@@ -30,6 +33,8 @@ function initMap () {
     const iconType = center.type === 'Antigen' ? 'nose' : 'mouth'
     const iconColor = { opensSoon: 'yellow', open: 'green', closesSoon: 'yellow', closed: 'red' }[openStatus]
     const icon = `${iconType}-${iconColor}.png`
+    center.hasNotOpenedYet
+    center.openStatus = openStatus
     center.marker = new google.maps.Marker({
       title: center.testcenterName,
       icon,
@@ -38,108 +43,15 @@ function initMap () {
         lng: center.longitude
       }
     })
-    center.openStatus = openStatus
     center.marker.addListener('click', () => {
       centers.forEach(center => center.info.close())
       center.info.open(map, center.marker)
+      location.hash = center.id
     })
-    center.info = new google.maps.InfoWindow({
-      content: `
-        <div class="info">
-          <div class="info-title info-title--${openStatus}">${center.testcenterName}</div>
-          ${openStatus === 'closesSoon'
-            ? `
-              <div class="info-header info-header--closesSoon">${text(texts.closesSoon)}</div>
-            `
-            : openStatus === 'opensSoon'
-              ? `
-                <div class="info-header info-header--opensSoon">${text(texts.opensSoon)}</div>
-              `
-              : ''
-          }
-          ${!hasNotOpenedYet
-            ? ''
-            : `
-              <div>
-                <div class="info-header info-header--note">
-                  ${text(texts.hasNotOpenedYet)}
-                </div>
-                <div> class="info-header">
-                  ${text(texts.opensOn)} ${dateFns.format(new Date(center.timeStart), 'MMMM do')}
-                </div>
-              </div>
-            `
-          }
-          <div class="info-header">${text(texts.testType)}</div>
-          <div class="info-content">
-            <table>
-              <tr>
-                <td>${text(texts[center.type.toLowerCase()])}</td><td>${center.type === 'Antigen' ? '<img src="nose.png">' : '<img src="mouth.png">'}</td>
-              </tr>
-            </table>
-          </div>
-          <div class="info-header">${text(texts.address)}</div>
-          <div class="info-content">
-            ${center.testcenterName}<br />
-            ${center.street} ${center.streetNumber}<br />
-            ${center.zipcode} ${center.city}<br />
-            ${center.region}
-          </div>
-          <div class="info-header">${text(texts.openingHours)}</div>
-          <div class="info-content">
-            <table>
-              ${center.openingHours.map(openingHour => `
-                <tr>
-                  <td>${text(texts[openingHour.day.toLowerCase()])}</td><td>${openingHour.timeStart.replace(/(.*\:.*)\:.*/, (_, hhmm) => hhmm)} - ${openingHour.timeEnd.replace(/(.*\:.*)\:.*/, (_, hhmm) => hhmm)}</div>
-                </tr>
-              `).join('\n')}
-            </table>
-          </div>
-          <div class="info-header">Info</div>
-          <div class="info-content">
-            <table>
-              <tr>
-                <td>${text(texts.company)}</td><td>${center.company}</td>
-              </tr>
-              <tr>
-                <td>${text(texts.placement)}</td><td>${text(center.placement === 'Stationary' ? texts.placementStationary : texts.placementMobile)}</td>
-              </tr>
-              <tr>
-                <td>${text(texts.requiresCpr)}</td><td>${text(center.requiresCprNumber ? texts.yes : texts.no)}</td>
-              </tr>
-              <tr>
-                <td>${text(texts.minimumAge)}</td><td>${center.minimumAge}</td>
-              </tr>
-              ${!center.description.trim().length
-                ? ''
-                : `
-                  <tr>
-                    <td>${text(texts.description)}</td><td>${center.description}</td>
-                  </tr>
-                `
-              }
-              <tr>
-                ${!center.bookingLink
-                  ? `<td colspan="2">${text(texts.noBookingNeeded)}</td>`
-                  : `<td>Book here</td><td><a href="${center.bookingLink}" target="_blank">${center.bookingLink}</a></td>`
-                }
-              </tr>
-              ${!center.directionsLink
-                ? ''
-                : `
-                  <tr>
-                    <td colspan="2"><a href="${center.directionsLink}" target="_blank">${text(texts.getDirections)}</a></td>
-                  </tr>
-                `
-              }
-            </table>
-          </div>
-        </div>
-      `
-    })
+    center.info = generateInfoWindow(center)
+    if (loadId === center.id) center.info.open(map, center.marker)
   })
 
-  // loadSettingsFromLocalStorage()
   updateStats()
   update()
 }
@@ -166,7 +78,6 @@ function update () {
     if (!shouldShow) return center.marker.setMap(null)
     center.marker.setMap(map)
   }))
-  // storeSettingsInLocalStorage()
 }
 
 function updateStats () {
@@ -230,6 +141,111 @@ function getOpenStatus (center) {
   if (isOpen && isOpenInOneHour) return 'open'
   if (!isOpen && isOpenInOneHour) return 'opensSoon'
   return 'closesSoon'
+}
+
+function generateInfoWindow({
+  openStatus, hasNotOpenedYet, testcenterName, timeStart, type, street,
+  streetNumber, zipcode, city, region, openingHours, company, placement,
+  requiresCprNumber, minimumAge, description, bookingLink, directionsLink
+}) {
+  const infoWindow = new google.maps.InfoWindow({
+    content: `
+      <div class="info">
+        <div class="info-title info-title--${openStatus}">${testcenterName}</div>
+        ${openStatus === 'closesSoon'
+          ? `
+            <div class="info-header info-header--closesSoon">${text(texts.closesSoon)}</div>
+          `
+          : openStatus === 'opensSoon'
+            ? `
+              <div class="info-header info-header--opensSoon">${text(texts.opensSoon)}</div>
+            `
+            : ''
+        }
+        ${!hasNotOpenedYet
+          ? ''
+          : `
+            <div>
+              <div class="info-header info-header--note">
+                ${text(texts.hasNotOpenedYet)}
+              </div>
+              <div> class="info-header">
+                ${text(texts.opensOn)} ${dateFns.format(new Date(timeStart), 'MMMM do')}
+              </div>
+            </div>
+          `
+        }
+        <div class="info-header">${text(texts.testType)}</div>
+        <div class="info-content">
+          <table>
+            <tr>
+              <td>${text(texts[type.toLowerCase()])}</td><td>${type === 'Antigen' ? '<img src="nose.png">' : '<img src="mouth.png">'}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="info-header">${text(texts.address)}</div>
+        <div class="info-content">
+          ${testcenterName}<br />
+          ${street} ${streetNumber}<br />
+          ${zipcode} ${city}<br />
+          ${region}
+        </div>
+        <div class="info-header">${text(texts.openingHours)}</div>
+        <div class="info-content">
+          <table>
+            ${openingHours.map(openingHour => `
+              <tr>
+                <td>${text(texts[openingHour.day.toLowerCase()])}</td><td>${openingHour.timeStart.replace(/(.*\:.*)\:.*/, (_, hhmm) => hhmm)} - ${openingHour.timeEnd.replace(/(.*\:.*)\:.*/, (_, hhmm) => hhmm)}</div>
+              </tr>
+            `).join('\n')}
+          </table>
+        </div>
+        <div class="info-header">Info</div>
+        <div class="info-content">
+          <table>
+            <tr>
+              <td>${text(texts.company)}</td><td>${company}</td>
+            </tr>
+            <tr>
+              <td>${text(texts.placement)}</td><td>${text(placement === 'Stationary' ? texts.placementStationary : texts.placementMobile)}</td>
+            </tr>
+            <tr>
+              <td>${text(texts.requiresCpr)}</td><td>${text(requiresCprNumber ? texts.yes : texts.no)}</td>
+            </tr>
+            <tr>
+              <td>${text(texts.minimumAge)}</td><td>${minimumAge}</td>
+            </tr>
+            ${!description.trim().length
+              ? ''
+              : `
+                <tr>
+                  <td>${text(texts.description)}</td><td>${description}</td>
+                </tr>
+              `
+            }
+            <tr>
+              ${!bookingLink
+                ? `<td colspan="2">${text(texts.noBookingNeeded)}</td>`
+                : `<td>Book here</td><td><a href="${bookingLink}" target="_blank">${bookingLink}</a></td>`
+              }
+            </tr>
+            ${!directionsLink
+              ? ''
+              : `
+                <tr>
+                  <td colspan="2"><a href="${directionsLink}" target="_blank">${text(texts.getDirections)}</a></td>
+                </tr>
+              `
+            }
+          </table>
+        </div>
+      </div>
+    `
+  })
+  infoWindow.addListener('closeclick', () => {
+    location.hash = ''
+  })
+  return infoWindow
 }
 
 function text (textId) {
