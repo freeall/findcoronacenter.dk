@@ -5,12 +5,15 @@ const $typePcr = $('#type-pcr')
 const $bookingOptional = $('#booking-optional')
 const $bookingNeeded = $('#booking-needed')
 const $showOnlyOpen = $('#show-only-open')
+const $lastUpdatedAt = $('#last-updated-at')
 const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showOnlyOpen]
 
 $components.forEach($component => $component.addEventListener('click', update))
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeInfoWindow()
 })
+$lastUpdatedAt.innerHTML = dateFns.format(new Date(lastUpdated), 'DD/M HH:mm')
+
 
 function initMap () {
   map = new google.maps.Map(document.getElementById('map'))
@@ -171,12 +174,25 @@ function updateStats () {
     lastUpdated,
     antigenCenters: centers.filter(({ type }) => type === 'Antigen').length,
     pcrCenters: centers.filter(({ type }) => type === 'PCR').length,
-    openingSoonCenters: centers.filter(center => center.openStatus === 'opensSoon').length,
-    openCenters: centers.filter(center => center.openStatus === 'open').length,
-    closesSoonCenters: centers.filter(center => center.openStatus === 'closesSoon').length,
-    closedCenters: centers.filter(center => center.openStatus === 'closed').length,
-    notOpenYetCenters: centers.filter(({ timeStart }) => dateFns.isAfter(new Date(timeStart), new Date())).length
+    openingSoonCenters: centers.filter(({ openStatus }) => openStatus === 'opensSoon').length,
+    openCenters: centers.filter(({ openStatus }) => openStatus === 'open').length,
+    closesSoonCenters: centers.filter(({ openStatus }) => openStatus === 'closesSoon').length,
+    closedCenters: centers.filter(({ openStatus }) => openStatus === 'closed').length,
+    notOpenYetCenters: centers.filter(({ timeStart }) => dateFns.isAfter(new Date(timeStart), new Date())).length,
+    openAntigenCenters: centers.filter(({ type, openStatus }) => type === 'Antigen' && (openStatus === 'open' || openStatus === 'closesSoon')).length,
+    openPcrCenters: centers.filter(({ type, openStatus }) => type === 'PCR' && (openStatus === 'open' || openStatus === 'closesSoon')).length
   }
+
+  const $statsAllCenters = document.querySelectorAll('.stats-all-centers')
+  const $statsOpenCenters = document.querySelectorAll('.stats-open-centers')
+  const $statsOpenAntigenCenters = document.querySelectorAll('.stats-open-antigen-centers')
+  const $statsOpenPcrCenters = document.querySelectorAll('.stats-open-pcr-centers')
+  const $statsNeverOpenedCenters = document.querySelectorAll('.stats-never-opened-centers')
+  for (const $center of $statsAllCenters) $center.innerHTML = centers.length
+  for (const $center of $statsOpenCenters) $center.innerHTML = stats.openCenters + stats.closesSoonCenters
+  for (const $center of $statsOpenAntigenCenters) $center.innerHTML = stats.openAntigenCenters
+  for (const $center of $statsOpenPcrCenters) $center.innerHTML = stats.openPcrCenters
+  for (const $center of $statsNeverOpenedCenters) $center.innerHTML = stats.notOpenYetCenters
   console.log(stats)
 }
 

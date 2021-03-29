@@ -2,19 +2,46 @@
 <html>
 
 <head>
-  <title>Corona Map</title>
+  <title>Find et åbent corona testcenter - coronacenter.dk</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Find et åbent corona testcenter tæt på dig">
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./style.css" />
   <script src="./data.js"></script>
   <script src="./set-language.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NYTVGDHWB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-6NYTVGDHWB');
+  </script>
 </head>
 
 <body>
   <div id="wrapper">
     <div id="header">
-      Loled by freeall
+      <div>
+        <span class="lang-en">There are <span class="stats-all-centers">~~~</span> test centers in Denmark. </span>
+        <span class="lang-da">Der er <span class="stats-all-centers">~~~</span> testcentre i Danmark. </span>
+        <span class="lang-en">Currently <span class="stats-open-centers">~</span> of those are open. </span>
+        <span class="lang-da">Lige nu er <span class="stats-open-centers">~</span> af dem åbne. </span>
+        <span class="lang-en"><span class="stats-open-antigen-centers">~~~</span> does antigen and <span class="stats-open-pcr-centers">~~~</span> does PCR tests. </span>
+        <span class="lang-da"><span class="stats-open-antigen-centers">~~~</span> laver hurtig-tests og <span class="stats-open-pcr-centers">~~~</span> laver PCR-tests. </span>
+        <span class="lang-en"><span class="stats-never-opened-centers">~~~</span> centers have not yet opened its doors. </span>
+        <span class="lang-da"><span class="stats-never-opened-centers">~~~</span> centre har stadig ikke åbnet dørene. </span>
+      </div>
+      <div class="topinfo">
+        Info
+        <div class="topinfo-content">
+          <span class="lang-en">Built on data from</span><span class="lang-da">Bygget på data fra</span> <a href="https://www.sst.dk" target="_blank">SST</a><br />
+          <span class="lang-en">Data last updated at</span><span class="lang-da">Data sidst opdateret</span> <span id="last-updated-at"></span><br />
+          <span class="lang-en">Created by</span><span class="lang-da">Lavet af</span> <a href="mailto:freeall@gmail.com">Tobias Baunæk Christensen</a><br />
+          <a href="https://github.com/freeall/coronacenter.dk"><span class="lang-en">Source code</span><span class="lang-da">Kildekode</span></a>
+
+        </div>
+      </div>
     </div>
     <div id="control">
       <div class="control-group">
