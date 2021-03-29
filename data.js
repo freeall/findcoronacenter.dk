@@ -1,5 +1,5 @@
 
-    lastUpdated = 'Mon Mar 29 2021 13:55:52 GMT+0200 (Central European Summer Time)'
+    lastUpdated = 'Mon Mar 29 2021 23:41:03 GMT+0200 (Central European Summer Time)'
     centers = [
   {
     "testcenterName": "Grænsehallerne",
@@ -12744,6 +12744,80 @@
     "description": "\n"
   },
   {
+    "testcenterName": "Horsens C",
+    "type": "Antigen",
+    "placement": "Stationary",
+    "directionsLink": "http://www.google.com/maps/place/55.85696549,9.8534698",
+    "minimumAge": 12,
+    "requiresCprNumber": false,
+    "company": "Falck",
+    "region": "Region Midtjylland",
+    "municipality": "Horsens",
+    "parish": "Klostersogn",
+    "zipcode": "8700",
+    "city": "Horsens",
+    "street": "Ove Jensens Alle",
+    "streetNumber": "19C",
+    "latitude": 55.85696549,
+    "longitude": 9.8534698,
+    "openMonday": true,
+    "openTuesday": true,
+    "openWednesday": true,
+    "openThursday": true,
+    "openFriday": true,
+    "openSaturday": true,
+    "openSunday": true,
+    "id": "984",
+    "dawaAddressId": "9f739d39-bd4c-4718-ad69-ee017d211edc",
+    "address": "Ove Jensens Alle 19C, 8700 Horsens",
+    "timeStart": "2021-04-04T06:00:00+00:00",
+    "openingHours": [
+      {
+        "day": "Monday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Tuesday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Wednesday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Thursday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Friday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Saturday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Sunday",
+        "timeStart": "08:00:00",
+        "timeEnd": "20:00:00",
+        "disabled": false
+      }
+    ],
+    "description": "Åbent Påskesøndag og 2. påskedag"
+  },
+  {
     "testcenterName": "Brædstrup",
     "type": "Antigen",
     "placement": "Stationary",
@@ -19406,6 +19480,50 @@
     "description": "\n"
   },
   {
+    "testcenterName": "Fuglebjerghallen, Fuglebjerg",
+    "type": "Antigen",
+    "placement": "Stationary",
+    "directionsLink": "http://www.google.com/maps/place/55.30230405,11.54335647",
+    "minimumAge": 12,
+    "requiresCprNumber": true,
+    "company": "Falck",
+    "region": "Region Sjælland",
+    "municipality": "Næstved",
+    "parish": "Fuglebjerg-Tystrup-Haldagerlille",
+    "zipcode": "4250",
+    "city": "Fuglebjerg",
+    "street": "Byagervej",
+    "streetNumber": "2",
+    "latitude": 55.30230405,
+    "longitude": 11.54335647,
+    "openMonday": false,
+    "openTuesday": false,
+    "openWednesday": false,
+    "openThursday": true,
+    "openFriday": false,
+    "openSaturday": true,
+    "openSunday": false,
+    "id": "985",
+    "dawaAddressId": "0a3f50ac-d921-32b8-e044-0003ba298018",
+    "address": "Byagervej 2, 4250 Fuglebjerg",
+    "timeStart": "2021-03-29T08:00:00+00:00",
+    "openingHours": [
+      {
+        "day": "Thursday",
+        "timeStart": "09:00:00",
+        "timeEnd": "19:00:00",
+        "disabled": false
+      },
+      {
+        "day": "Saturday",
+        "timeStart": "09:00:00",
+        "timeEnd": "19:00:00",
+        "disabled": false
+      }
+    ],
+    "description": "Testcentret lukker på det oplyste tidspunkt. Derfor er det god ide at møde op 30 minutter før lukketid."
+  },
+  {
     "testcenterName": "Næstved, Fladsåhallen",
     "type": "Antigen",
     "placement": "Stationary",
@@ -19669,7 +19787,7 @@
     "openMonday": true,
     "openTuesday": false,
     "openWednesday": true,
-    "openThursday": true,
+    "openThursday": false,
     "openFriday": true,
     "openSaturday": false,
     "openSunday": false,
@@ -19686,12 +19804,6 @@
       },
       {
         "day": "Wednesday",
-        "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Thursday",
         "timeStart": "09:00:00",
         "timeEnd": "19:00:00",
         "disabled": false
@@ -19727,7 +19839,7 @@
     "openWednesday": true,
     "openThursday": false,
     "openFriday": false,
-    "openSaturday": true,
+    "openSaturday": false,
     "openSunday": true,
     "id": "475",
     "dawaAddressId": "0a3f50af-a662-32b8-e044-0003ba298018",
@@ -19742,12 +19854,6 @@
       },
       {
         "day": "Wednesday",
-        "timeStart": "09:00:00",
-        "timeEnd": "19:00:00",
-        "disabled": false
-      },
-      {
-        "day": "Saturday",
         "timeStart": "09:00:00",
         "timeEnd": "19:00:00",
         "disabled": false
