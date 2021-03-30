@@ -128,3 +128,8 @@ td + td {
   font-style: italic;
   color: #004400;
 }
+
+.type-logo {
+  height: 18px;
+  margin-left: 5px
+}

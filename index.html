@@ -5,18 +5,22 @@
   <title>Find et åbent corona testcenter - coronacenter.dk</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="description" content="Find et åbent corona testcenter tæt på dig">
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="./style.css" />
   <script src="./data.js"></script>
-  <script src="./set-language.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6NYTVGDHWB"></script>
+  <script src="./bootstrap.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JSRKV9WKL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-6NYTVGDHWB');
-  </script>
+    gtag('config', 'G-6JSRKV9WKL');
+  </script>  </script>
 </head>
 
 <body>
@@ -29,8 +33,8 @@
         <span class="lang-da">Lige nu er <span class="stats-open-centers">~</span> af dem åbne. </span>
         <span class="lang-en"><span class="stats-open-antigen-centers">~~~</span> does antigen and <span class="stats-open-pcr-centers">~~~</span> does PCR tests. </span>
         <span class="lang-da"><span class="stats-open-antigen-centers">~~~</span> laver hurtig-tests og <span class="stats-open-pcr-centers">~~~</span> laver PCR-tests. </span>
-        <span class="lang-en"><span class="stats-never-opened-centers">~~~</span> centers have not yet opened its doors. </span>
-        <span class="lang-da"><span class="stats-never-opened-centers">~~~</span> centre har stadig ikke åbnet dørene. </span>
+        <span class="lang-en"><span class="stats-never-opened-centers">~~~</span> centers have never opened its doors. </span>
+        <span class="lang-da"><span class="stats-never-opened-centers">~~~</span> centre har stadig aldrig haft åbnet dørene. </span>
       </div>
       <div class="topinfo">
         Info
@@ -48,11 +52,11 @@
         <div class="control-header"><span class="lang-en">Test type</span><span class="lang-da">Testtype</span></div>
         <div class="control-option">
           <input type="checkbox" id="type-antigen" checked>
-          <label class="control-label" for="type-antigen"><span class="lang-en">Antigen</span><span class="lang-da">Hurtig-test</span> <img src="nose.png"></label>
+          <label class="control-label" for="type-antigen"><span class="lang-en">Antigen</span><span class="lang-da">Hurtig-test</span> <img class="type-logo" src="antigen-black.png"></label>
         </div>
         <div class="control-option">
           <input type="checkbox" id="type-pcr" checked>
-          <label class="control-label" for="type-pcr"><span class="lang-en">PCR</span><span class="lang-da">PCR-test</span> <img src="mouth.png"></label>
+          <label class="control-label" for="type-pcr"><span class="lang-en">PCR</span><span class="lang-da">PCR-test</span> <img class="type-logo" src="pcr-black.png"></label>
         </div>
       </div>
 

@@ -9,6 +9,7 @@ const $showOnlyOpen = $('#show-only-open')
 const $lastUpdatedAt = $('#last-updated-at')
 const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showOnlyOpen]
 
+updateStats()
 $components.forEach($component => $component.addEventListener('click', update))
 $lastUpdatedAt.innerHTML = dateFns.format(new Date(lastUpdated), 'DD/M HH:mm')
 window.addEventListener('popstate', loadFromUrlId)
@@ -28,13 +29,9 @@ function initMap () {
 
   // Add marker
   centers.forEach(center => {
-    const hasNotOpenedYet = dateFns.isAfter(new Date(center.timeStart), new Date())
-    const openStatus = getOpenStatus(center)
-    const iconType = center.type === 'Antigen' ? 'nose' : 'mouth'
-    const iconColor = { opensSoon: 'yellow', open: 'green', closesSoon: 'yellow', closed: 'red' }[openStatus]
+    const iconType = center.type === 'Antigen' ? 'antigen' : 'pcr'
+    const iconColor = { opensSoon: 'yellow', open: 'green', closesSoon: 'yellow', closed: 'red' }[center.openStatus]
     const icon = `${iconType}-${iconColor}.png`
-    center.hasNotOpenedYet
-    center.openStatus = openStatus
     center.marker = new google.maps.Marker({
       title: center.testcenterName,
       icon,
@@ -51,7 +48,6 @@ function initMap () {
     center.info = generateInfoWindow(center)
   })
 
-  updateStats()
   update()
   loadFromUrlId()
 }
@@ -126,40 +122,8 @@ function closeInfoWindow () {
   centers.forEach(center => center.info.close())
 }
 
-function getOpenStatus (center) {
-  const now = new Date()
-  const day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dateFns.getDay(now)]
-  const hour = dateFns.getHours(now)
-  const hasNotOpenedYet = dateFns.isAfter(new Date(center.timeStart), now)
-  const isOpen = center.openingHours.reduce((isOpen, openingHour) => {
-    if (isOpen) return true
-    if (openingHour.disabled) return false
-    if (day !== openingHour.day) return false
-    const from = dateFns.parse(`2000-01-01 ${openingHour.timeStart}`)
-    const to = dateFns.parse(`2000-01-01 ${openingHour.timeEnd}`)
-    const check = dateFns.parse(`2000-01-01 ${dateFns.format(now, 'HH:mm:ss')}`)
-    return dateFns.isBefore(from, check) && dateFns.isAfter(to, check)
-  }, false)
-  const isOpenInOneHour = center.openingHours.reduce((isOpenInOneHour, openingHour) => {
-    if (isOpenInOneHour) return true
-    if (openingHour.disabled) return false
-    if (day !== openingHour.day) return false
-    const from = dateFns.parse(`2000-01-01 ${openingHour.timeStart}`)
-    const to = dateFns.parse(`2000-01-01 ${openingHour.timeEnd}`)
-    const checkNow = dateFns.parse(`2000-01-01 ${dateFns.format(now, 'HH:mm:ss')}`)
-    const checkInOneHour = dateFns.addHours(checkNow, 1)
-    return dateFns.isBefore(from, checkInOneHour) && dateFns.isAfter(to, checkInOneHour)
-  }, false)
-
-  if (hasNotOpenedYet) return 'closed'
-  if (!isOpen && !isOpenInOneHour) return 'closed'
-  if (isOpen && isOpenInOneHour) return 'open'
-  if (!isOpen && isOpenInOneHour) return 'opensSoon'
-  return 'closesSoon'
-}
-
 function generateInfoWindow({
-  openStatus, hasNotOpenedYet, testcenterName, timeStart, type, street,
+  openStatus, hasNeverOpenedYet, testcenterName, timeStart, type, street,
   streetNumber, zipcode, city, region, openingHours, company, placement,
   requiresCprNumber, minimumAge, description, bookingLink, directionsLink
 }) {
@@ -177,12 +141,12 @@ function generateInfoWindow({
             `
             : ''
         }
-        ${!hasNotOpenedYet
+        ${!hasNeverOpenedYet
           ? ''
           : `
             <div>
               <div class="info-header info-header--note">
-                ${text(texts.hasNotOpenedYet)}
+                ${text(texts.hasNeverOpenedYet)}
               </div>
               <div> class="info-header">
                 ${text(texts.opensOn)} ${dateFns.format(new Date(timeStart), 'MMMM do')}
@@ -194,7 +158,7 @@ function generateInfoWindow({
         <div class="info-content">
           <table>
             <tr>
-              <td>${text(texts[type.toLowerCase()])}</td><td>${type === 'Antigen' ? '<img src="nose.png">' : '<img src="mouth.png">'}</td>
+              <td>${text(texts[type.toLowerCase()])}</td><td>${type === 'Antigen' ? '<img class="type-logo" src="antigen-black.png">' : '<img class="type-logo" src="pcr-black.png">'}</td>
             </tr>
           </table>
         </div>
@@ -277,8 +241,8 @@ const texts = {
     en: 'Opens soon',
     da: 'Åbner snart'
   },
-  hasNotOpenedYet: {
-    en: 'Has not opened yet!',
+  hasNeverOpenedYet: {
+    en: 'Has never opened yet!',
     da: 'Ikke åben endnu'
   },
   opensOn: {
