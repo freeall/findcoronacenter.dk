@@ -1,4 +1,5 @@
 $ = document.querySelector.bind(document)
+$$ = document.querySelectorAll.bind(document)
 let map
 const $typeAntigen = $('#type-antigen')
 const $typePcr = $('#type-pcr')
@@ -9,13 +10,13 @@ const $lastUpdatedAt = $('#last-updated-at')
 const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showOnlyOpen]
 
 $components.forEach($component => $component.addEventListener('click', update))
+$lastUpdatedAt.innerHTML = dateFns.format(new Date(lastUpdated), 'DD/M HH:mm')
+window.addEventListener('popstate', loadFromUrlId)
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return
   closeInfoWindow()
-  location.hash = ''
+  setUrlId(null)
 })
-$lastUpdatedAt.innerHTML = dateFns.format(new Date(lastUpdated), 'DD/M HH:mm')
-
 
 function initMap () {
   map = new google.maps.Map(document.getElementById('map'))
@@ -24,7 +25,6 @@ function initMap () {
   bounds.extend({ lng: 8.08997684086, lat: 54.8000145534 })
   bounds.extend({ lng: 12.6900061378, lat: 57.730016588 })
   map.fitBounds(bounds)
-  const loadId = location.hash && location.hash.split('#')[1]
 
   // Add marker
   centers.forEach(center => {
@@ -46,14 +46,22 @@ function initMap () {
     center.marker.addListener('click', () => {
       centers.forEach(center => center.info.close())
       center.info.open(map, center.marker)
-      location.hash = center.id
+      setUrlId(center.id)
     })
     center.info = generateInfoWindow(center)
-    if (loadId === center.id) center.info.open(map, center.marker)
   })
 
   updateStats()
   update()
+  loadFromUrlId()
+}
+
+function loadFromUrlId () {
+  const id = location?.search?.match(/id\=(.*)/) && location.search.match(/id\=(.*)/)[1]
+  centers.forEach(center => center.info.close())
+
+  const center = centers.find(center => center.id === id)
+  center?.info?.open(map, center.marker)
 }
 
 function update () {
@@ -94,17 +102,24 @@ function updateStats () {
     openPcrCenters: centers.filter(({ type, openStatus }) => type === 'PCR' && (openStatus === 'open' || openStatus === 'closesSoon')).length
   }
 
-  const $statsAllCenters = document.querySelectorAll('.stats-all-centers')
-  const $statsOpenCenters = document.querySelectorAll('.stats-open-centers')
-  const $statsOpenAntigenCenters = document.querySelectorAll('.stats-open-antigen-centers')
-  const $statsOpenPcrCenters = document.querySelectorAll('.stats-open-pcr-centers')
-  const $statsNeverOpenedCenters = document.querySelectorAll('.stats-never-opened-centers')
+  const $statsAllCenters = $$('.stats-all-centers')
+  const $statsOpenCenters = $$('.stats-open-centers')
+  const $statsOpenAntigenCenters = $$('.stats-open-antigen-centers')
+  const $statsOpenPcrCenters = $$('.stats-open-pcr-centers')
+  const $statsNeverOpenedCenters = $$('.stats-never-opened-centers')
   for (const $center of $statsAllCenters) $center.innerHTML = centers.length
   for (const $center of $statsOpenCenters) $center.innerHTML = stats.openCenters + stats.closesSoonCenters
   for (const $center of $statsOpenAntigenCenters) $center.innerHTML = stats.openAntigenCenters
   for (const $center of $statsOpenPcrCenters) $center.innerHTML = stats.openPcrCenters
   for (const $center of $statsNeverOpenedCenters) $center.innerHTML = stats.notOpenYetCenters
   console.log(stats)
+}
+
+function setUrlId (id) {
+  const url = new URL(window.location)
+  url.searchParams.set('id', id)
+  if (!id) url.searchParams.delete('id')
+  window.history.pushState({}, '', url)
 }
 
 function closeInfoWindow () {
