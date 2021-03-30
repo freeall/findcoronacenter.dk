@@ -148,7 +148,7 @@ function generateInfoWindow({
               <div class="info-header info-header--note">
                 ${text(texts.hasNeverOpenedYet)}
               </div>
-              <div> class="info-header">
+              <div class="info-header">
                 ${text(texts.opensOn)} ${dateFns.format(new Date(timeStart), 'MMMM do')}
               </div>
             </div>
