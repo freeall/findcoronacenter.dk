@@ -149,7 +149,7 @@ function generateInfoWindow({
                 ${text(texts.hasNeverOpenedYet)}
               </div>
               <div class="info-header">
-                ${text(texts.opensOn)} ${dateFns.format(new Date(timeStart), 'MMMM do')}
+                ${text(texts.opensOn)} ${dateFns.format(new Date(timeStart), 'DD/M HH:mm')}
               </div>
             </div>
           `
@@ -247,7 +247,7 @@ const texts = {
   },
   opensOn: {
     en: 'Opens on',
-    da: 'Åbner d.'
+    da: 'Åbner'
   },
   testType: {
     en: 'Test type',
