@@ -32,8 +32,15 @@ function initMap () {
     const iconType = center.type === 'Antigen' ? 'antigen' : 'pcr'
     const iconColor = { opensSoon: 'yellow', open: 'green', closesSoon: 'yellow', closed: 'red' }[center.openStatus]
     const icon = `${iconType}-${iconColor}.png`
+    const zIndexes = {
+      closed: 1,
+      opensSoon: 2,
+      closesSoon: 3,
+      open: 4
+    }
     center.marker = new google.maps.Marker({
       title: center.testcenterName,
+      zIndex: zIndexes[center.openStatus],
       icon,
       position: {
         lat: center.latitude,
@@ -68,12 +75,7 @@ function update () {
   const shouldOnlyShowOpen = $showOnlyOpen.checked
 
   // Update the map in this order so that the open centers are put on top
-  const closedCenters = centers.filter(c => c.openStatus === 'closed')
-  const closesSoonCenters = centers.filter(c => c.openStatus === 'closesSoon')
-  const opensSoonCenters = centers.filter(c => c.openStatus === 'opensSoon')
-  const openCenters = centers.filter(c => c.openStatus === 'open')
-  const centersInDrawOrder = [closedCenters, closesSoonCenters, opensSoonCenters, openCenters]
-  centersInDrawOrder.forEach(centers => centers.forEach(center => {
+  centers.forEach(center => {
     const isClosed = center.openStatus === 'closed'
     const isTypeShown = (isTypeAntigen && center.type === 'Antigen') || (isTypePcr && center.type === 'PCR')
     const isBookingShown = (isBookingOptional && !center.bookingLink) || (isBookingNeeded && center.bookingLink)
@@ -81,7 +83,7 @@ function update () {
     if (shouldOnlyShowOpen && isClosed) return center.marker.setMap(null)
     if (!shouldShow) return center.marker.setMap(null)
     center.marker.setMap(map)
-  }))
+  })
 }
 
 function updateStats () {
