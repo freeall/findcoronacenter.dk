@@ -141,7 +141,6 @@ function updateStats () {
   for (const $center of $statsOpenAntigenCenters) $center.innerHTML = stats.openAntigenCenters
   for (const $center of $statsOpenPcrCenters) $center.innerHTML = stats.openPcrCenters
   for (const $center of $statsNeverOpenedCenters) $center.innerHTML = stats.notOpenYetCenters
-  console.log(stats)
 }
 
 function setUrlId (id) {
