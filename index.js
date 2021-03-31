@@ -21,11 +21,28 @@ document.addEventListener('keydown', e => {
 
 function initMap () {
   map = new google.maps.Map(document.getElementById('map'))
-  const bounds = new google.maps.LatLngBounds()
+  
+  // Sets general position to display 'Denmark'. This is needed incase some user's oversees or doesn't accept to share thier location 
   // Bounds taken from here https://gist.github.com/graydon/11198540
+  const bounds = new google.maps.LatLngBounds()  
   bounds.extend({ lng: 8.08997684086, lat: 54.8000145534 })
   bounds.extend({ lng: 12.6900061378, lat: 57.730016588 })
   map.fitBounds(bounds)
+
+  // Ask user for location. 
+  // If the user press allow. Set map view to their position
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };          
+          map.setZoom(13);
+          map.setCenter(pos);
+          
+        });          
+  }
 
   // Add marker
   centers.forEach(center => {
