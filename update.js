@@ -2,6 +2,10 @@ const puppeteer = require('puppeteer')
 const fs = require('fs')
 const { open } = require('inspector')
 
+console.warn('Deprecated - data.js is no longer updated manually');
+
+return;
+
 run()
 
 async function run () {

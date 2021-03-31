@@ -10,16 +10,26 @@ const $lastUpdatedAt = $('#last-updated-at')
 const $currentLocationButton = $('.button--current-location')
 const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showOnlyOpen]
 
-updateStats()
-$components.forEach($component => $component.addEventListener('click', update))
-$lastUpdatedAt.innerHTML = dateFns.format(new Date(lastUpdated), 'DD/M HH:mm')
-$currentLocationButton.addEventListener('click', () => centerOnCurrentLocation())
-window.addEventListener('popstate', loadFromUrlId)
-document.addEventListener('keydown', e => {
-  if (e.key !== 'Escape') return
-  closeInfoWindow()
-  setUrlId(null)
-})
+fetch('https://covid-19-kort.dk/testcentre.json').then(response => response.json()).then(data => {
+  window.centers = data.centres;
+  window.lastUpdated = new Date(data.buildTime).toString();
+
+  addStatusToCenters();
+  updateStats();
+
+  $components.forEach($component => $component.addEventListener('click', update))
+  $lastUpdatedAt.innerHTML = dateFns.format(new Date(lastUpdated), 'DD/M HH:mm')
+  $currentLocationButton.addEventListener('click', () => centerOnCurrentLocation())
+  window.addEventListener('popstate', loadFromUrlId)
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return
+    closeInfoWindow()
+    setUrlId(null)
+  });
+
+  initMap();
+
+});
 
 function initMap () {
   map = new google.maps.Map(document.getElementById('map'))
