@@ -1,17 +1,19 @@
 $ = document.querySelector.bind(document)
 $$ = document.querySelectorAll.bind(document)
-let map
+let map, currentLocationMarker
 const $typeAntigen = $('#type-antigen')
 const $typePcr = $('#type-pcr')
 const $bookingOptional = $('#booking-optional')
 const $bookingNeeded = $('#booking-needed')
 const $showOnlyOpen = $('#show-only-open')
 const $lastUpdatedAt = $('#last-updated-at')
+const $currentLocationButton = $('.button--current-location')
 const $components = [$typeAntigen, $typePcr, $bookingOptional, $bookingNeeded, $showOnlyOpen]
 
 updateStats()
 $components.forEach($component => $component.addEventListener('click', update))
 $lastUpdatedAt.innerHTML = dateFns.format(new Date(lastUpdated), 'DD/M HH:mm')
+$currentLocationButton.addEventListener('click', () => centerOnCurrentLocation())
 window.addEventListener('popstate', loadFromUrlId)
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return
@@ -21,30 +23,20 @@ document.addEventListener('keydown', e => {
 
 function initMap () {
   map = new google.maps.Map(document.getElementById('map'))
-  
-  // Sets general position to display 'Denmark'. This is needed incase some user's oversees or doesn't accept to share thier location 
+
   // Bounds taken from here https://gist.github.com/graydon/11198540
-  const bounds = new google.maps.LatLngBounds()  
+  const bounds = new google.maps.LatLngBounds()
   bounds.extend({ lng: 8.08997684086, lat: 54.8000145534 })
   bounds.extend({ lng: 12.6900061378, lat: 57.730016588 })
   map.fitBounds(bounds)
 
-  // Ask user for location. 
-  // If the user press allow. Set map view to their position
-  if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };          
-          map.setZoom(13);
-          map.setCenter(pos);
-          
-        });          
-  }
+  // Add marker for current location
+  currentLocationMarker = new google.maps.Marker({
+    zIndex: 5,
+    icon: './location-black.png'
+  })
 
-  // Add marker
+  // Add markers for centers
   centers.forEach(center => {
     const iconType = center.type === 'Antigen' ? 'antigen' : 'pcr'
     const iconColor = { opensSoon: 'yellow', open: 'green', closesSoon: 'yellow', closed: 'red' }[center.openStatus]
@@ -74,6 +66,18 @@ function initMap () {
 
   update()
   loadFromUrlId()
+}
+
+function centerOnCurrentLocation () {
+  // Ask user for location. If the user press allow, set map view to their position
+  if (!navigator.geolocation) return
+  navigator.geolocation.getCurrentPosition(({ coords: { latitude: lat, longitude: lng } }) => {
+    const position = { lat, lng }
+    map.setZoom(13)
+    map.setCenter(position)
+    currentLocationMarker.setPosition(position)
+    currentLocationMarker.setMap(map)
+  })
 }
 
 function loadFromUrlId () {
@@ -240,9 +244,7 @@ function generateInfoWindow({
       </div>
     `
   })
-  infoWindow.addListener('closeclick', () => {
-    location.hash = ''
-  })
+  infoWindow.addListener('closeclick', () => setUrlId(null))
   return infoWindow
 }
 
