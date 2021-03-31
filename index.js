@@ -53,11 +53,11 @@ function initMap () {
 }
 
 function loadFromUrlId () {
-  const id = location?.search?.match(/id\=(.*)/) && location.search.match(/id\=(.*)/)[1]
+  const id = location.search && location.search.match(/id\=(.*)/) && location.search.match(/id\=(.*)/)[1]
   centers.forEach(center => center.info.close())
 
   const center = centers.find(center => center.id === id)
-  center?.info?.open(map, center.marker)
+  center && center.info && center.info.open(map, center.marker)
 }
 
 function update () {
