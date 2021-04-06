@@ -83,6 +83,11 @@ td + td {
   margin-top: 20px;
 }
 
+.control-group--center {
+  display: flex;
+  justify-content: center;
+}
+
 .control-header {
   font-size: 16px;
   font-weight: bold;
@@ -132,4 +137,18 @@ td + td {
 .type-logo {
   height: 18px;
   margin-left: 5px
+}
+
+.button {
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  border: 2px solid black;
+  border-radius: 4px;
+}
+
+.button--current-location {
+  background: url('./location-black.png') no-repeat;
+  background-size: 26px 26px;
+  background-position: center;
 }
