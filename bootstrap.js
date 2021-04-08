@@ -37,6 +37,12 @@ function getOpenStatus (center) {
     const from = dateFns.parse(`2000-01-01 ${openingHour.timeStart}`)
     const to = dateFns.parse(`2000-01-01 ${openingHour.timeEnd}`)
     const check = dateFns.parse(`2000-01-01 ${dateFns.format(now, 'HH:mm:ss')}`)
+
+    // Handles centers that are open 24 hours.    
+    if (openingHour.timeStart == '00:00:00' && openingHour.timeEnd == '00:00:00') {      
+      return true;
+    }
+
     return dateFns.isBefore(from, check) && dateFns.isAfter(to, check)
   }, false)
   const isOpenInOneHour = center.openingHours.reduce((isOpenInOneHour, openingHour) => {
@@ -47,6 +53,12 @@ function getOpenStatus (center) {
     const to = dateFns.parse(`2000-01-01 ${openingHour.timeEnd}`)
     const checkNow = dateFns.parse(`2000-01-01 ${dateFns.format(now, 'HH:mm:ss')}`)
     const checkInOneHour = dateFns.addHours(checkNow, 1)
+
+    // Handles centers that are open 24 hours.    
+    if (openingHour.timeStart == '00:00:00' && openingHour.timeEnd == '00:00:00') {
+      return true;
+    }
+
     return dateFns.isBefore(from, checkInOneHour) && dateFns.isAfter(to, checkInOneHour)
   }, false)
 
