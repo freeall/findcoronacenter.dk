@@ -1,5 +1,4 @@
 setLanguage()
-addStatusToCenters()
 
 function setLanguage () {
   const lang = navigator.language.indexOf('da') > -1 ? 'da' : 'en'
