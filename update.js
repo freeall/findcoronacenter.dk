@@ -50,7 +50,7 @@ async function run () {
     )
   } catch (err) {
     if (useS3) {
-      const filename = `error - ${new Date().toLocaleDateString()}.html`
+      const filename = `error - ${new Date().toLocaleDateString().replace(/\//g, '-')}.html`
       await s3.send(new PutObjectCommand({
         Bucket: process.env.AWS_S3_BUCKET,
         Key: 'data.js',
