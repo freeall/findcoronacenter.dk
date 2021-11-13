@@ -38,9 +38,25 @@ async function run () {
     waitUntil: 'networkidle0'
   })
   await new Promise(r => setTimeout(r, 10000))
-  const centers = await page.evaluate(
-    () => centres
-  )
+  const html = await page.evaluate(() => document.documentElement.outerHTML)
+  let centers
+  try {
+    centers = await page.evaluate(
+      () => centres
+    )
+  } catch (err) {
+    if (useS3) {
+      const filename = `error - ${new Date().toLocaleDateString}.html`
+      await s3.send(new PutObjectCommand({
+        Bucket: process.env.AWS_S3_BUCKET,
+        Key: 'data.js',
+        Body: Buffer.from(html)
+      }))
+      console.error(`Due to error, the fetched html was stored in ${filename}`)
+    }
+    throw err
+  }
+
   centers.forEach(center => {
   	// Overwrite directions link with actual directions link
   	center.directionsLink = `https://www.google.com/maps/dir//${center.latitude},${center.longitude}/@${center.latitude},${center.longitude},14z`
