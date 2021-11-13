@@ -16,7 +16,7 @@ const s3 = new S3Client({
 run()
 
 async function run () {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
   const page = await browser.newPage()
   await page.setExtraHTTPHeaders({
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
