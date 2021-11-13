@@ -53,7 +53,7 @@ async function run () {
       const filename = `error - ${new Date().toLocaleDateString().replace(/\//g, '-')}.html`
       await s3.send(new PutObjectCommand({
         Bucket: process.env.AWS_S3_BUCKET,
-        Key: 'data.js',
+        Key: filename,
         Body: Buffer.from(html)
       }))
       console.error(`Due to error, the fetched html was stored in ${filename}`)
