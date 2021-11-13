@@ -13,6 +13,7 @@ const s3 = new S3Client({
   }
 })
 
+console.log(process.env.AWS_S3_BUCKET, useS3)
 run().catch(err => {
   console.error(err)
   process.exit(1)
