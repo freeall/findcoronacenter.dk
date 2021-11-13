@@ -13,7 +13,10 @@ const s3 = new S3Client({
   }
 })
 
-run()
+run().catch(err => {
+  console.error(err)
+  process.exit(1)
+})
 
 async function run () {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
@@ -46,7 +49,7 @@ async function run () {
     )
   } catch (err) {
     if (useS3) {
-      const filename = `error - ${new Date().toLocaleDateString}.html`
+      const filename = `error - ${new Date().toLocaleDateString()}.html`
       await s3.send(new PutObjectCommand({
         Bucket: process.env.AWS_S3_BUCKET,
         Key: 'data.js',
